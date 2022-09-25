@@ -1,5 +1,13 @@
 import random
 
+class Card:
+    def __init__(self, suit, rank):
+        self.suit = suit
+        self.rank = rank
+
+    def __str__(self):
+        return "{} of {}".format(self.rank['rank'], self.suit)
+
 class Deck:
     def __init__(self):
         self.cards = []
@@ -22,7 +30,7 @@ class Deck:
 
         for suit in suits:
             for rank in ranks:
-                self.cards.append([suit, rank])
+                self.cards.append(Card(suit, rank))
 
     def shuffle(self):
         if (len(self.cards) > 1):
@@ -35,7 +43,3 @@ class Deck:
                 cards_dealt.append(self.cards.pop())
         return cards_dealt
 
-deck = Deck()
-deck.shuffle()
-
-print(deck.cards)
